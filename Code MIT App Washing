@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Screen1 xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+
+    <VerticalArrangement>
+        <Label android:id="@+id/statusLabel" android:text="Status: Off"/>
+        <Button android:id="@+id/startButton" android:text="Start"/>
+        <Button android:id="@+id/stopButton" android:text="Stop"/>
+    </VerticalArrangement>
+
+    <FirebaseDB android:id="@+id/firebaseDB" 
+        android:FirebaseURL="your_firebase_url" 
+        android:FirebaseToken="your_firebase_token"/>
+
+</Screen1>
