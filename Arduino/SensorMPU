@@ -1,1 +1,56 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+int buzzer = 9;
+
+void setup() {
+    Wire.begin();
+    Serial.begin(9600);
+    lcd.begin(16, 2);
+    lcd.backlight();
+    
+    pinMode(buzzer, OUTPUT);
+    
+    mpu.initialize();
+    if (!mpu.testConnection()) {
+        Serial.println("MPU6050 tidak terdeteksi!");
+        while (1);
+    }
+    
+    lcd.setCursor(0, 0);
+    lcd.print("Washing Machine");
+    lcd.setCursor(0, 1);
+    lcd.print("Monitoring...");
+    delay(2000);
+    lcd.clear();
+}
+
+void loop() {
+    int16_t ax, ay, az;
+    mpu.getAcceleration(&ax, &ay, &az);
+    float totalAccel = sqrt(ax * ax + ay * ay + az * az) / 16384.0; // Convert to 'g'
+
+    lcd.setCursor(0, 0);
+    
+    if (totalAccel > 1.2) {  // Mesin berjalan
+        lcd.print("Status: Running ");
+        digitalWrite(buzzer, LOW);
+    } else if (totalAccel < 1.1 && totalAccel > 0.9) { // Mesin idle
+        lcd.print("Status: Idle    ");
+        digitalWrite(buzzer, LOW);
+    } else { // Mesin selesai
+        lcd.print("Status: Done    ");
+        digitalWrite(buzzer, HIGH);
+        delay(1000);
+        digitalWrite(buzzer, LOW);
+    }
+    
+    lcd.setCursor(0, 1);
+    lcd.print("Vibration: ");
+    lcd.print(totalAccel);
+    delay(500);
+}
 
