@@ -1,3 +1,7 @@
+// Interpretasi Data
+// Perubahan besar dalam nilai akselerasi → Mesin sedang mencuci.
+// Nilai tetap stabil dalam waktu tertentu → Mesin berhenti.
+
 #include <Wire.h>
 #include <MPU6050.h>
 
