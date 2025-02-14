@@ -29,4 +29,10 @@ SDA	--> GPIO21
 SCL	--> GPIO22
 INT	--> Tidak digunakan (Opsional)
 
+2. Hall Effect Sensor
+Fungsi dalam Smart Laundry
+- Digunakan untuk mendeteksi rotasi drum dengan menghitung jumlah pulsa medan magnet.
+- Jika jumlah pulsa berhenti meningkat, artinya mesin selesai mencuci.
+- Jika drum berputar tidak normal, sistem dapat mengeluarkan peringatan kesalahan.
+
 
