@@ -1,1 +1,43 @@
+#include <Wire.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+
+float vibrationThreshold = 1.0; // Sesuaikan ambang batas sesuai kebutuhan
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin();
+  mpu.initialize();
+
+  if (!mpu.testConnection()) {
+    Serial.println("Failed to find MPU6050 chip");
+    while (1) {
+      delay(10);
+    }
+  }
+
+  Serial.println("MPU6050 Found!");
+}
+
+void loop() {
+  int16_t ax, ay, az;
+  mpu.getAcceleration(&ax, &ay, &az);
+
+  Serial.print("Acceleration X: ");
+  Serial.print(ax);
+  Serial.print(", Y: ");
+  Serial.print(ay);
+  Serial.print(", Z: ");
+  Serial.print(az);
+  Serial.println(" m/s^2");
+
+  if (abs(ax) > vibrationThreshold || abs(ay) > vibrationThreshold || abs(az) > vibrationThreshold) {
+    Serial.println("Detected Vibration On");
+  } else {
+    Serial.println("Detected Vibration Off");
+  }
+
+  delay(500);
+}
 
