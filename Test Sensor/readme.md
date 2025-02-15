@@ -42,6 +42,8 @@ Fungsi dalam Smart Laundry
 Koneksi Hall Effect Sensor dengan ESP32
 Hall Effect Pin	ESP32 Pin
 VCC --->	3.3V;
+
 GND --->	GND;
+
 OUT	---> GPIO23;
 
