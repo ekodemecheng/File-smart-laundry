@@ -22,12 +22,16 @@ Fungsi dalam Smart Laundry
 Koneksi MPU6050 dengan ESP32
 MPU6050 menggunakan komunikasi I2C, sehingga hanya memerlukan dua pin pada ESP32.
 
-MPU6050 Pin	ESP32 Pin
-VCC -->	3.3V
-GND -->	GND
-SDA	--> GPIO21
-SCL	--> GPIO22
-INT	--> Tidak digunakan (Opsional)
+MPU6050 Pin	to ESP32 Pin
+VCC -->	3.3V;
+
+GND -->	GND;
+
+SDA	--> GPIO21;
+
+SCL	--> GPIO22;
+
+INT	--> Tidak digunakan (Opsional);
 
 2. Hall Effect Sensor
 Fungsi dalam Smart Laundry
@@ -35,4 +39,9 @@ Fungsi dalam Smart Laundry
 - Jika jumlah pulsa berhenti meningkat, artinya mesin selesai mencuci.
 - Jika drum berputar tidak normal, sistem dapat mengeluarkan peringatan kesalahan.
 
+Koneksi Hall Effect Sensor dengan ESP32
+Hall Effect Pin	ESP32 Pin
+VCC --->	3.3V;
+GND --->	GND;
+OUT	---> GPIO23;
 
